@@ -23,7 +23,7 @@ public class RepairShopService extends GenericService<RepairShop, RepairShopRepo
     public List<RepairShop> getRepairShopsByManufacturerId(Long manufacturerId, Integer pageNo, Integer pageSize, String sortBy) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<RepairShop> result = repository.findRepairShopsBySpecializedInManufacturerContains(manufacturerId, paging);
+        Page<RepairShop> result = repository.findRepairShopsBySpecializedInManufacturerIdOrSpecializedInManufacturerNull(manufacturerId, paging);
 
         if (result.hasContent()) {
             return result.getContent();

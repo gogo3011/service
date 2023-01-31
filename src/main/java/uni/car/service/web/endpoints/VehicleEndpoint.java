@@ -1,6 +1,7 @@
 package uni.car.service.web.endpoints;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,16 @@ public class VehicleEndpoint {
     @GetMapping(path = "/count")
     public ResponseEntity<Long> count() {
         return new ResponseEntity<>(service.count(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/listByUserId")
+    public ResponseEntity<List<Vehicle>> load(
+            @RequestParam(required = true) Long userId,
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy
+    ) {
+        return new ResponseEntity<>(service.getVehiclesByUserId(userId, pageNo, pageSize, sortBy), new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping(path = "/create")

@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import uni.car.service.data.entity.shop.RepairShop;
 
 public interface RepairShopRepository extends JpaRepository<RepairShop, Long> {
-    Page<RepairShop> findRepairShopsBySpecializedInManufacturerContains(Long manufacturerId, Pageable pageable);
+    Page<RepairShop> findRepairShopsBySpecializedInManufacturerIdOrSpecializedInManufacturerNull
+            (Long manufacturerId, Pageable pageable);
 }

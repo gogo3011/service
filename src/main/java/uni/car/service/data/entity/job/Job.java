@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import uni.car.service.data.entity.BaseEntity;
 import uni.car.service.data.entity.enums.JobStatus;
+import uni.car.service.data.entity.enums.Specialization;
 import uni.car.service.data.entity.shop.Mechanic;
 import uni.car.service.data.entity.shop.RepairShop;
 import uni.car.service.data.entity.user.Vehicle;
@@ -37,4 +38,6 @@ public class Job extends BaseEntity {
     private Date finished;
     @Enumerated(EnumType.STRING)
     private JobStatus status;
+    @Enumerated(value = EnumType.STRING)
+    private Specialization jobType;
 }

@@ -6,11 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import uni.car.service.data.entity.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -21,17 +17,16 @@ import javax.validation.constraints.NotNull;
 @Table(name = "t_car")
 public class Car extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @NotNull
     @JoinColumn(name = "model_id")
     private Model model;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @NotNull
     @JoinColumn(name = "engine_id")
     private Engine engine;
 
-    @NotBlank
     private String variant;
 
 }

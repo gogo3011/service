@@ -30,6 +30,11 @@ public class UserEndpoint {
         return new ResponseEntity<>(service.count(), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/load")
+    public ResponseEntity<User> load(@RequestParam(required = true) Long id) {
+        return new ResponseEntity<>(service.load(id), HttpStatus.OK);
+    }
+
     @PostMapping(path = "/create")
     public ResponseEntity<User> createUser(
             @RequestBody User toCreate

@@ -8,9 +8,10 @@ import lombok.ToString;
 import uni.car.service.data.entity.BaseEntity;
 import uni.car.service.data.entity.core.Address;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Setter
 @Getter
@@ -19,9 +20,6 @@ import java.util.List;
 @Entity
 @Table(name = "t_user")
 public class User extends BaseEntity {
-    @NotBlank
-    private String username;
-
     @JsonIgnore
     private String password;
 
@@ -31,8 +29,6 @@ public class User extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
-    @OneToMany
-    private List<Vehicle> vehicles;
 }
 
 

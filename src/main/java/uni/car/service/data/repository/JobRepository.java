@@ -7,4 +7,6 @@ import uni.car.service.data.entity.job.Job;
 
 public interface JobRepository extends JpaRepository<Job, Long> {
     Page<Job> findAllJobsByRepairShopId(long repairShopId, Pageable pageable);
+
+    Page<Job> findAllByMechanicId(long mechanicId, Pageable pageable);
 }

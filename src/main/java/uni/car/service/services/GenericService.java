@@ -6,11 +6,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import uni.car.service.data.entity.BaseEntity;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericService<T, K extends JpaRepository<T, Long>> {
+public class GenericService<T extends BaseEntity, K extends JpaRepository<T, Long>> {
 
     GenericService(K repository) {
         this.repository = repository;
@@ -34,6 +36,10 @@ public class GenericService<T, K extends JpaRepository<T, Long>> {
     }
 
     public T save(T toSave) {
+        if (toSave.getId() <= 1) {
+            toSave.setCreated(new Date(System.currentTimeMillis()));
+        }
+        toSave.setEdited(new Date(System.currentTimeMillis()));
         return repository.save(toSave);
     }
 
