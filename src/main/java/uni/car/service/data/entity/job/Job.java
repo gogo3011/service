@@ -34,7 +34,7 @@ public class Job extends BaseEntity {
     private Mechanic mechanic;
     @NotNull
     private Date started;
-    @NotNull
+
     private Date finished;
     @Enumerated(EnumType.STRING)
     private JobStatus status;

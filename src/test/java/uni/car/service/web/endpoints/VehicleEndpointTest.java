@@ -1,7 +1,6 @@
 package uni.car.service.web.endpoints;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -233,95 +232,6 @@ class VehicleEndpointTest {
     }
 
     /**
-     * Method under test: {@link VehicleEndpoint#createVehicle(Vehicle)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testCreateVehicle2() {
-        VehicleEndpoint vehicleEndpoint = new VehicleEndpoint(null);
-
-        Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setCreated(mock(Date.class));
-        manufacturer.setDeleted(true);
-        manufacturer.setEdited(mock(Date.class));
-        manufacturer.setId(123L);
-        manufacturer.setLogoUrl("https://example.org/example");
-        manufacturer.setName("Name");
-
-        Engine engine = new Engine();
-        engine.setCreated(mock(Date.class));
-        engine.setDeleted(true);
-        engine.setDisplacement(10.0d);
-        engine.setEdited(mock(Date.class));
-        engine.setFuelType(FuelType.DIESEL);
-        engine.setHorsePower(10.0d);
-        engine.setId(123L);
-        engine.setManufacturer(manufacturer);
-        engine.setName("Name");
-
-        Manufacturer manufacturer1 = new Manufacturer();
-        manufacturer1.setCreated(mock(Date.class));
-        manufacturer1.setDeleted(true);
-        manufacturer1.setEdited(mock(Date.class));
-        manufacturer1.setId(123L);
-        manufacturer1.setLogoUrl("https://example.org/example");
-        manufacturer1.setName("Name");
-
-        Model model = new Model();
-        model.setCreated(mock(Date.class));
-        model.setDeleted(true);
-        model.setEdited(mock(Date.class));
-        model.setEndDate(mock(Date.class));
-        model.setId(123L);
-        model.setManufacturer(manufacturer1);
-        model.setModelName("Model Name");
-        model.setStartDate(mock(Date.class));
-        model.setVehicleType(VehicleType.SEDAN);
-
-        Car car = new Car();
-        car.setCreated(mock(Date.class));
-        car.setDeleted(true);
-        car.setEdited(mock(Date.class));
-        car.setEngine(engine);
-        car.setId(123L);
-        car.setModel(model);
-        car.setVariant("Variant");
-
-        Address address = new Address();
-        address.setCity("Oxford");
-        address.setCountryCode("GB");
-        address.setCreated(mock(Date.class));
-        address.setDeleted(true);
-        address.setEdited(mock(Date.class));
-        address.setHouseNumber("42");
-        address.setId(123L);
-        address.setStreet("Street");
-
-        User user = new User();
-        user.setAddress(address);
-        user.setCreated(mock(Date.class));
-        user.setDeleted(true);
-        user.setEdited(mock(Date.class));
-        user.setFirstName("Jane");
-        user.setId(123L);
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-
-        Vehicle vehicle = new Vehicle();
-        vehicle.setCar(car);
-        vehicle.setColor("Color");
-        vehicle.setCreated(mock(Date.class));
-        vehicle.setDateOfManufacturing(mock(Date.class));
-        vehicle.setDeleted(true);
-        vehicle.setEdited(mock(Date.class));
-        vehicle.setId(123L);
-        vehicle.setOwner(user);
-        vehicle.setRegistrationNumber("42");
-        vehicle.setVin("Vin");
-        vehicleEndpoint.createVehicle(vehicle);
-    }
-
-    /**
      * Method under test: {@link VehicleEndpoint#updateVehicle(Vehicle)}
      */
     @Test
@@ -492,96 +402,6 @@ class VehicleEndpointTest {
         assertTrue(actualUpdateVehicleResult.getHeaders().isEmpty());
         assertEquals(HttpStatus.OK, actualUpdateVehicleResult.getStatusCode());
         verify(vehicleRepository).save((Vehicle) any());
-    }
-
-    /**
-     * Method under test: {@link VehicleEndpoint#updateVehicle(Vehicle)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateVehicle2() {
-
-        VehicleEndpoint vehicleEndpoint = new VehicleEndpoint(null);
-
-        Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setCreated(mock(Date.class));
-        manufacturer.setDeleted(true);
-        manufacturer.setEdited(mock(Date.class));
-        manufacturer.setId(123L);
-        manufacturer.setLogoUrl("https://example.org/example");
-        manufacturer.setName("Name");
-
-        Engine engine = new Engine();
-        engine.setCreated(mock(Date.class));
-        engine.setDeleted(true);
-        engine.setDisplacement(10.0d);
-        engine.setEdited(mock(Date.class));
-        engine.setFuelType(FuelType.DIESEL);
-        engine.setHorsePower(10.0d);
-        engine.setId(123L);
-        engine.setManufacturer(manufacturer);
-        engine.setName("Name");
-
-        Manufacturer manufacturer1 = new Manufacturer();
-        manufacturer1.setCreated(mock(Date.class));
-        manufacturer1.setDeleted(true);
-        manufacturer1.setEdited(mock(Date.class));
-        manufacturer1.setId(123L);
-        manufacturer1.setLogoUrl("https://example.org/example");
-        manufacturer1.setName("Name");
-
-        Model model = new Model();
-        model.setCreated(mock(Date.class));
-        model.setDeleted(true);
-        model.setEdited(mock(Date.class));
-        model.setEndDate(mock(Date.class));
-        model.setId(123L);
-        model.setManufacturer(manufacturer1);
-        model.setModelName("Model Name");
-        model.setStartDate(mock(Date.class));
-        model.setVehicleType(VehicleType.SEDAN);
-
-        Car car = new Car();
-        car.setCreated(mock(Date.class));
-        car.setDeleted(true);
-        car.setEdited(mock(Date.class));
-        car.setEngine(engine);
-        car.setId(123L);
-        car.setModel(model);
-        car.setVariant("Variant");
-
-        Address address = new Address();
-        address.setCity("Oxford");
-        address.setCountryCode("GB");
-        address.setCreated(mock(Date.class));
-        address.setDeleted(true);
-        address.setEdited(mock(Date.class));
-        address.setHouseNumber("42");
-        address.setId(123L);
-        address.setStreet("Street");
-
-        User user = new User();
-        user.setAddress(address);
-        user.setCreated(mock(Date.class));
-        user.setDeleted(true);
-        user.setEdited(mock(Date.class));
-        user.setFirstName("Jane");
-        user.setId(123L);
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-
-        Vehicle vehicle = new Vehicle();
-        vehicle.setCar(car);
-        vehicle.setColor("Color");
-        vehicle.setCreated(mock(Date.class));
-        vehicle.setDateOfManufacturing(mock(Date.class));
-        vehicle.setDeleted(true);
-        vehicle.setEdited(mock(Date.class));
-        vehicle.setId(123L);
-        vehicle.setOwner(user);
-        vehicle.setRegistrationNumber("42");
-        vehicle.setVin("Vin");
-        vehicleEndpoint.updateVehicle(vehicle);
     }
 
     /**
